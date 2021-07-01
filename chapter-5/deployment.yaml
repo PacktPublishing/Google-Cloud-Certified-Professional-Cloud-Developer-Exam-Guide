@@ -1,0 +1,36 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+	name: "your-application"
+	namespace: "default"
+	labels:
+		app: "your-application"
+spec:
+	replicas: 3
+	selector:
+		matchLabels:
+			app: "your-application"
+	template:
+		metadata:
+			labels:
+				app: "your-application"
+	spec:
+		containers:
+		- name: "your-container"
+		image: " YOUR_IMAGE "
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+	name: "your-service"
+	namespace: "default"
+	labels:
+		app: "your-application"
+spec:
+	ports:
+		- protocol: "TCP"
+		port: 80
+	selector:
+		app: "your-application"
+	type: "LoadBalancer"
+	loadBalancerIP: ""

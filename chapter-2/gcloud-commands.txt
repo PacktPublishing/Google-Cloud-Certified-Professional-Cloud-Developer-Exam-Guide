@@ -1,0 +1,26 @@
+#ADD IAM POLICY BINDING
+gcloud projects add-iam-policy-binding PROJECT_ID --member=MEMBER --role=ROLE
+
+#SET IAM POLICY
+gcloud iam service-accounts set-iam-policy sa-id policy-file
+
+# KMS CREATE KEYS
+gcloud kms keys create KEY_NAME --location LOCATION --keyring
+KEY_RING_NAME \
+--purpose "encryption"
+
+# KMS ENCRYPT
+gcloud kms encrypt \
+--location LOCATION \
+--keyring KEY_RING_NAME \
+--key KEY_NAME \
+--plaintext-file FILE_TO_ENCRYPT \
+--ciphertext-file ENCRYPTED_FILE
+
+# KMS DECRYPT
+gcloud kms decrypt \
+--location LOCATION \
+--keyring KEY_RING_NAME \
+--key KEY_NAME \
+--ciphertext-file ENCRYPTED_FILE \
+--plaintext-file FILE_TO_DECRYPT

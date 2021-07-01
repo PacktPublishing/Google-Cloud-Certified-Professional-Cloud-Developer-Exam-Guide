@@ -1,0 +1,26 @@
+    swagger: "2.0"
+    info:
+      title: "My Service"
+      description: "This is the description of the service."
+      version: "1.0.0"
+    host: "SERVICE_NAME.YOUR-PROJECT-ID.appspot.com"
+    schemes:
+      - "https"
+    paths:
+      "/myService":
+        get:
+          description: "This is the description of the endpoint."
+          operationId: "myServiceName"
+          parameters:
+            -
+              name: parameterName
+              in: query
+              required: true
+              type: string
+          responses:
+            200:
+              description: "Success."
+              schema:
+                type: string
+            400:
+              description: "The resource is invalid or missing."

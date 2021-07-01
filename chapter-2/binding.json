@@ -1,0 +1,11 @@
+{
+"bindings": [
+{
+"members": [
+"user:member@example.com"
+],
+"role": "roles/iam.serviceAccountUser"
+}
+],
+"version": 1
+}

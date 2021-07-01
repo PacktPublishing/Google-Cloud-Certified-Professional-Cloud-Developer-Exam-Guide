@@ -1,0 +1,21 @@
+#CREATE A COLDLINE BUCKET
+gsutil mb -c COLDLINE gs://BUCKET_NAME
+
+#CREATE A PUBSUB TOPIC
+gcloud pubsub topics create TOPIC_NAME
+
+#CREATE A BIGQUERY DATASET
+bq –location=LOCATION mk --dataset DATASET_NAME
+
+#CREATE A LOGGING BUCKET
+gcloud logging buckets create LOGGING_BUCKET_NAME \
+   --location=global \
+   --project=PROJECT_ID
+
+#CREATE A LOGGING SINK
+gcloud logging sinks create SINK_NAME \
+logging.googleapis.com/projects/logs-test-project/locations/global/buckets/LOGGING_BUCKET_NAME \
+  --log-filter='logName:cloudaudit.googleapis.com' \
+  --description=SINK_DESCRIPTION \
+  --organization=ORGANIZATION_ID \
+  --include-children

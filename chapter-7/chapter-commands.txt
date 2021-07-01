@@ -1,0 +1,45 @@
+#LIFECYCLE CONFIG
+gsutil lifecycle set CONFIG_FILE gs://BUCKET_NAME
+
+#OBJECT VERSIONING
+gsutil versioning set on gs://BUCKET_NAME
+
+#GET OBJECTS
+gsutil ls -a gs://BUCKET_NAME
+
+#RETENTION POLICY
+gsutil retention set SECONDS gs://BUCKET_NAME
+
+#LOCK RETENTION POLICY
+gsutil retention lock gs://BUCKET_NAME
+
+#SET OBJECT HOLD
+gsutil retention event-default set gs://BUCKET_NAME
+
+#DISABLE OBJECT HOLD
+gsutil retention event-default release gs://BUCKET_NAME
+
+#SET OBJECT WITH HOLD TYPE 
+gsutil retention HOLD_TYPE set gs://BUCKET_NAME/OBJECT_NAME
+
+#DISABLE OBJECT WITH HOLD TYPE
+gsutil retention HOLD_TYPE release gs://BUCKET_NAME/OBJECT_NAME
+
+#SET UNIFORM BUCKET LEVEL ACCESS
+gsutil uniformbucketlevelaccess set on gs://BUCKET_NAME
+
+#REVERSE UNIFORM BUCKET LEVEL ACCESS
+gsutil uniformbucketlevelaccess set off gs://BUCKET_NAME
+
+#SET ACL
+gsutil acl ch -u SCOPE:READ gs://BUCKET_NAME
+
+#CREATE SIGNED URL
+gsutil signurl -d EXPIRATION_TIME PRIVATE_KEY gs://BUCKET_NAME/
+OBJECT_NAME
+
+#CLOUD STORAGE LIBRARY
+npm install --save @google-cloud/storage
+
+#ADD CORS
+gsutil cors set FILE_NAME gs://BUCKET_NAME

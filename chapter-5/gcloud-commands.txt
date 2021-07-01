@@ -1,0 +1,33 @@
+#CREATE AN INSTANCE TEMPLATE
+gcloud compute instance-templates create my-instance-template \
+--machine-type n1-standard-1 \
+--image-family debian-9 \
+--image-project debian-cloud \
+--boot-disk-size 250GB
+--startup-script-url=URL_TO_STARTUP_SCRIPT
+
+#CREATE A MANAGED INSTANCE GROUP
+gcloud compute instance-groups managed create my-instance-
+group\
+--size SIZE \
+--template INSTANCE_TEMPLATE \
+--zone ZONE
+
+#CONFIGURE A LOAD BALANCER
+gcloud compute backend-services add-backend my-backend \
+--instance-group=INSTANCE_GROUP \
+[--instance-group-region=INSTANCE_GROUP_REGION |
+--instance-group-zone=INSTANCE_GROUP_ZONE] \
+--balancing-mode=UTILIZATION
+--max-utilization=MAX_UTILIZATION
+
+
+#SUBMIT AN IMAGE
+gcloud build submit –tag gcr.io/PROJECT_ID/IMAGE_NAME
+
+#CLOUD BUILD CONFIG
+gcloud build submit –project=PROJECT_ID –config BUILD_CONFIG
+
+#DEPLOY CLOUD RUN APPLICATION
+gcloud run deploy --image gcr.io/PROJECT_ID/IMAGE_NAME
+--platform managed

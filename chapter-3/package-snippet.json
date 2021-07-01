@@ -1,0 +1,4 @@
+"scripts":
+{
+"start":"functions-framework –target=helloWorld"
+}

@@ -1,0 +1,23 @@
+#CLOUD ENPOINTS OPENAPI VALIDATION
+gcloud endpoints services deploy [YOUR_OPENAPI_DOCUMENT] --validate-only 
+
+#CLOUD ENPOINTS OPENAPI DEPLOY
+gcloud endpoints services deploy [YOUR_OPENAPI_DOCUMENT]
+
+#CREATE API GATEWAY API
+gcloud api-gateway apis create API_NAME --project=PROJECT_ID
+
+#API GATEWAY CONFIG
+gcloud api-gateway api-configs create CONFIG_NAME \
+  --api=API_NAME --openapi-spec=API_DEFINITION_PATH \
+  --project=PROJECT_ID --backend-auth-service-account=SERVICE_ACCOUNT_EMAIL
+
+#API GATEWAY EXPOSE
+gcloud api-gateway gateways create GATEWAY_NAME \
+  --api=API_NAME --api-config=CONFIG_NAME \
+  --location=GCP_REGION --project=PROJECT_ID
+
+#API GATEWAY DESCRIBE
+gcloud api-gateway gateways describe GATEWAY_name \
+  --location=GCP_REGION --project=PROJECT_ID
+

@@ -1,0 +1,11 @@
+#CREATE PUSH SUBSCRIPTION
+gcloud pubsub subscriptions create SUBSCRIPTION_ID --topic=TOPIC_ID –push-endpoint=PUSH_ENDPOINT
+
+#CREATE PULL SUBSCRIPTION
+gcloud pubsub subscriptions create SUBSCRIPTION_ID --topic=TOPIC_ID
+
+#INSTALL PUBSUB CLIENT LIBRARY
+npm install @google-cloud/pubsub --save
+
+#INSTALL FIRESTORE CLIENT LIBRARY
+npm install --save @google-cloud/firestore

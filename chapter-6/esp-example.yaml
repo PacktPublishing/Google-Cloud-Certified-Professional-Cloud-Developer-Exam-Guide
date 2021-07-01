@@ -1,0 +1,20 @@
+- name: endpoints
+        resources:
+          limits:
+            cpu: CPU_LIMIT
+          requests:
+            cpu: CPU_REQUEST
+        image: gcr.io/endpoints-release/endpoints-runtime:1.32.0
+        args:
+        - --http_port=EXPOSE_PORT
+        - --backend=127.0.0.1:BACKEND_PORT
+        - --service=SERVICE_NAME.endpoints.PROJECT_ID.cloud.goog
+        - --rollout_strategy=managed
+        - --cors_preset=basic
+        - -z=healthz
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: EXPOSE_PORT
+        ports:
+          - containerPort: EXPOSE_PORT

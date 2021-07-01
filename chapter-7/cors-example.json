@@ -1,0 +1,8 @@
+[
+{
+"origin": ["ORIGIN"],
+"method": ["METHOD"],
+"responseHeader": ["HEADER"],
+"maxAgeSeconds": MAX-AGE
+}
+]

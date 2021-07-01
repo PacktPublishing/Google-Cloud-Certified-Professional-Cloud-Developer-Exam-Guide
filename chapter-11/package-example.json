@@ -1,0 +1,7 @@
+{
+  "name": "cloud-logging-test",
+  "version": "0.0.1",
+  "dependencies":{
+    "@google-cloud/logging": "9.2.1"
+  }
+}

@@ -1,0 +1,50 @@
+#CREATE MEMCACHE INSTANCE
+gcloud memcache instances create INSTANCE-NAME --node-
+count=NUMBER-OF-NODES --node-cpu=NUMBER-OF-CPUS --node-
+memory=MEMORY-PER-NODE --region=REGION --zones=ZONE
+
+#DESCRIBE MEMCACHE INSTANCE
+gcloud memcache instances describe INSTANCE-NAME
+--region=REGION
+
+#CREATE COMPUTE ENGINE INSTANCE
+gcloud beta compute --project=PROJECT_ID instances create
+memorystore-memcached-test --zone=ZONE --machine-type=n1-
+standard-1 --subnet=default
+
+#INSTALL TELNET
+sudo apt-get install telnet
+
+#CONNECT TO A NODE
+telnet NODE_IP_ADDRESS 11211
+
+#SET KEY
+set KEY META_DATA EXPIRY_TIME LENGTH_IN_BYTES
+
+#GET KEY
+get mykey
+
+#CREATE REDIS INSTANCE
+gcloud redis instance create INSTANCE_NAME --size=SIZE --region=REGION --redis-version=VERSION
+
+
+#DESCRIBE REDIS INSTANCE
+gcloud redis instances describe INSTANCE-NAME --region=REGION
+
+#ENABLE VPC ACCESS
+gcloud services enable vpcaccess.googleapis.com
+
+#CREATE VPC ACCESS CONNECTOR
+gcloud beta compute networks vpc-access connectors create
+CONNECTOR_NAME \
+--region REGION \
+--range IP_RANGE \
+
+#DEPLOY CLOUD FUNCTION
+gcloud functions deploy increaseCount \
+--runtime nodejs10 \
+--trigger-http \
+--region REGION \
+--entry-point increaseCount \
+--vpc-connector projects/PROJECT_ID/locations/REGION/
+connectors/CONNECTOR_NAME

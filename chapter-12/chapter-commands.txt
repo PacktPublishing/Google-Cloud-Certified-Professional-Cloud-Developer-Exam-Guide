@@ -1,0 +1,42 @@
+#CREATE COMPUTE ENGINE INSTANCE FOR MONITORING TEST
+gcloud compute instances create monitoring-test --zone=us-central1-a --machine-type=e2-medium
+
+#CREATE COMPUTE ENGINE INSTANCE FOR DEBUG TEST
+gcloud compute instances create debug-test --zone=us-central1-a --machine-type=e2-medium --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server
+
+#CREATE FIREWALL RULES
+gcloud compute firewall-rules create default-allow-http --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80 --source-ranges=0.0.0.0/0 --target-tags=http-server
+
+#GET NODE VERSION
+node --version
+
+#CREATE NEW PROJECT
+npm init
+
+#INSTALL EXPRESS DEPENDENCIES
+npm install express
+
+#INSTALL CLOUD DEBUG AGENT DEPENDENCIES
+npm install --save @google-cloud/debug-agent
+
+#CREATE NEW FILE
+touch index.js
+
+#RUN APPLICATION
+node index.js
+
+#INSTALL CLOUD LOGGING
+curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh
+bash add-logging-agent-repo.sh --also-install
+
+#INSTALL OPENTELEMETRY DEPENDENCIES
+npm install --save @opentelemetry/api
+npm install --save @opentelemetry/node
+npm install --save @opentelemetry/tracing
+npm install --save @opentelemetry/plugin-http
+npm install --save @opentelemetry/plugin-express
+npm install --save @google-cloud/trace-agent
+
+#ENABLE CLOUD PROFILER API
+gcloud services enable cloudprofiler.googleapis.com
+

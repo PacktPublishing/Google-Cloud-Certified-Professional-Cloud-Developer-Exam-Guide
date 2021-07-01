@@ -1,0 +1,5 @@
+securityDefinitions:
+  security_method:
+    type: "apiKey"
+    name: "key"
+    in: "query"
